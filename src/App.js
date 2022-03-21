@@ -2,6 +2,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import "./App.css";
 import Home from "./pages/Home";
+import NewBasket from "./pages/NewBasket";
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       </Route>
       <Route path="/home" exact>
         <Home />
+      </Route>
+      <Route path="/new-basket">
+        <NewBasket />
       </Route>
     </Switch>
   );
