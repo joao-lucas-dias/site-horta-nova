@@ -6,7 +6,7 @@ const ProductsList = (props) => {
       <h2>Produtos</h2>
       <ul>
         {props.products.map((product) => {
-          return <li>{product}</li>;
+          return <li key={product}>{product}</li>;
         })}
       </ul>
     </Fragment>
