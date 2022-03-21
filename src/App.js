@@ -1,6 +1,5 @@
 import { Route, Redirect, Switch } from "react-router-dom";
 
-import "./App.css";
 import Home from "./pages/Home";
 import NewBasket from "./pages/NewBasket";
 
