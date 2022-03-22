@@ -2,6 +2,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import NewBasket from "./pages/NewBasket";
+import { CategoryContextProvider } from "./store/category-context";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
         <Home />
       </Route>
       <Route path="/new-basket">
-        <NewBasket />
+        <CategoryContextProvider>
+          <NewBasket />
+        </CategoryContextProvider>
       </Route>
     </Switch>
   );
