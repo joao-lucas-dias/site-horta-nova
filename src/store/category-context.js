@@ -13,13 +13,15 @@ export const CategoryContextProvider = (props) => {
   };
 
   return (
-    <CategoryContext.Provider value={{
-      filteredCategory: filteredCategory,
-      onCategoryFilter: categoryFilterHandler
-    }}>
+    <CategoryContext.Provider
+      value={{
+        filteredCategory: filteredCategory,
+        onCategoryFilter: categoryFilterHandler
+      }}
+    >
       {props.children}
     </CategoryContext.Provider>
-  )
+  );
 };
 
 export default CategoryContext;

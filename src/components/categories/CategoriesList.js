@@ -7,7 +7,7 @@ const CategoriesList = (props) => {
       <h2>Categorias</h2>
       <ul>
         {props.categories.map((category) => {
-          return <CategoryItem category={category}/>;
+          return <CategoryItem category={category} />;
         })}
       </ul>
     </Fragment>

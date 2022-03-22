@@ -7,7 +7,9 @@ const ProductItem = (props) => {
       </span>
       <p>Origem: {props.product.info.origin}</p>
       <p>{props.product.info.info_extra}</p>
-      <p>{props.product.price.value}€ / {props.product.price.measure}</p>
+      <p>
+        {props.product.price.value}€ / {props.product.price.measure}
+      </p>
     </li>
   );
 };
