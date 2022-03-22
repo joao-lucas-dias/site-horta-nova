@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import CategoryItem from "./CategoryItem";
 
 const CategoriesList = (props) => {
   return (
@@ -6,7 +7,7 @@ const CategoriesList = (props) => {
       <h2>Categorias</h2>
       <ul>
         {props.categories.map((category) => {
-          return <li key={category}>{category}</li>;
+          return <CategoryItem category={category}/>;
         })}
       </ul>
     </Fragment>
