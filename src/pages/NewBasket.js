@@ -12,7 +12,7 @@ const NewBasket = () => {
     <Fragment>
       <h1>Personalize o seu Cabaz</h1>
       <CategoriesList categories={data.categories} />
-      <ProductsList products={data.products} />
+      <ProductsList products={data.products[0]} />
     </Fragment>
   );
 };

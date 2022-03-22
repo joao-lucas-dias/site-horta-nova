@@ -6,8 +6,8 @@ const ProductsList = (props) => {
     <Fragment>
       <h2>Produtos</h2>
       <ul>
-        {props.products.map((product) => {
-          return <ProductItem product={product} />;
+        {props.products.items.map((productInfo) => {
+          return <ProductItem product={productInfo} />;
         })}
       </ul>
     </Fragment>
