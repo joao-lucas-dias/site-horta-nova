@@ -8,13 +8,13 @@ const ProductItemForm = (props) => {
   const quantityChangeHandler = (type) => {
     if (type === "dec" && currentQuantity > props.quantityInfo.min) {
       setCurrentQuantity((oldValue) => {
-        return oldValue - 1;
+        return oldValue - props.quantityInfo.step;
       });
     }
 
     if (type === "inc" && currentQuantity < newMax) {
       setCurrentQuantity((oldValue) => {
-        return oldValue + 1;
+        return oldValue + props.quantityInfo.step;
       });
     }
   };
