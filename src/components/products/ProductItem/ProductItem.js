@@ -1,11 +1,24 @@
+import { useContext } from "react";
+import { CartContext } from "../../../store/cart-context";
 import ProductItemForm from "./ProductItemForm";
 
 const ProductItem = (props) => {
-  const quantity = {
+  const cartContext = useContext(CartContext);
+
+  const itemQuantityInfo = {
     min: props.product.quantity.min,
     step: props.product.quantity.step,
     max: props.product.quantity.max
-  }
+  };
+
+  const addToCartHandler = (quantity) => {
+    cartContext.addItem({
+      id: props.product.title + new Date().getTime().toString(),
+      title: props.product.title,
+      quantity: quantity,
+      price: props.product.price.value
+    });
+  };
 
   return (
     <li key={props.product.title}>
@@ -21,7 +34,7 @@ const ProductItem = (props) => {
           {props.product.price.value}€ / {props.product.price.measure}
         </p>
       </div>
-      <ProductItemForm quantityInfo={quantity} />
+      <ProductItemForm quantityInfo={itemQuantityInfo} onAddToCart={addToCartHandler} />
     </li>
   );
 };

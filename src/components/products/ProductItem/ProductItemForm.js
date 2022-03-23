@@ -22,7 +22,7 @@ const ProductItemForm = (props) => {
   const addProductHandler = (event) => {
     event.preventDefault();
 
-    console.log("add: " + currentQuantity);
+    props.onAddToCart(currentQuantity);
 
     setCurrentQuantity(props.quantityInfo.min);
   };
