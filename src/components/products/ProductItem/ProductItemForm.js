@@ -1,18 +1,52 @@
+import { useState } from "react";
+
 const ProductItemForm = (props) => {
+  const [currentQuantity, setCurrentQuantity] = useState(props.quantityInfo.min);
+  const newMax =
+    props.quantityInfo.max === null ? Number.MAX_SAFE_INTEGER : props.quantityInfo.max;
+
+  const quantityChangeHandler = (type) => {
+    if (type === "dec" && currentQuantity > props.quantityInfo.min) {
+      setCurrentQuantity((oldValue) => {
+        return oldValue - 1;
+      });
+    }
+
+    if (type === "inc" && currentQuantity < newMax) {
+      setCurrentQuantity((oldValue) => {
+        return oldValue + 1;
+      });
+    }
+  };
+
+  const addProductHandler = (event) => {
+    event.preventDefault();
+
+    console.log("add: " + currentQuantity);
+
+    setCurrentQuantity(props.quantityInfo.min);
+  };
+
   return (
-    <form>
+    <form onSubmit={addProductHandler}>
       <div>
-        <button type="button">-</button>
+        <button type="button" onClick={() => quantityChangeHandler("dec")}>
+          -
+        </button>
         <input
+          readOnly
           type="number"
+          inputMode="numeric"
+          value={currentQuantity}
           min={props.quantityInfo.min}
           step={props.quantityInfo.step}
-          max={props.quantityInfo.max}
-          placeholder={props.quantityInfo.min}
+          max={newMax}
         />
-        <button type="button">+</button>
+        <button type="button" onClick={() => quantityChangeHandler("inc")}>
+          +
+        </button>
       </div>
-      <button type="submit">Adicionar</button>
+      <button>Adicionar</button>
     </form>
   );
 };
