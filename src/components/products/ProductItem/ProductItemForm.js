@@ -28,7 +28,7 @@ const ProductItemForm = (props) => {
   };
 
   return (
-    <form onSubmit={addProductHandler}>
+    <form onSubmit={addProductHandler} style={{"textAlign": "center"}}>
       <div>
         <button type="button" onClick={() => quantityChangeHandler("dec")}>
           -
@@ -41,6 +41,7 @@ const ProductItemForm = (props) => {
           min={props.quantityInfo.min}
           step={props.quantityInfo.step}
           max={newMax}
+          style={{"width": "2rem"}}
         />
         <button type="button" onClick={() => quantityChangeHandler("inc")}>
           +
