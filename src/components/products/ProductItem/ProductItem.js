@@ -8,20 +8,26 @@ const ProductItem = (props) => {
   const itemQuantityInfo = {
     min: props.product.quantity.min,
     step: props.product.quantity.step,
-    max: props.product.quantity.max
+    max:
+      props.product.quantity.max === null
+        ? Number.MAX_SAFE_INTEGER
+        : props.product.quantity.max
   };
 
   const addToCartHandler = (quantity) => {
     cartContext.addItem({
-      id: props.product.title + new Date().getTime().toString(),
+      id: props.product.id,
       title: props.product.title,
-      quantity: quantity,
+      quantityInfo: {
+        quantity,
+        ...itemQuantityInfo
+      },
       price: props.product.price.value
     });
   };
 
   return (
-    <li key={props.product.title}>
+    <li key={props.product.id}>
       <div>
         <h3>{props.product.title}</h3>
         <p>({props.product.title_extra})</p>

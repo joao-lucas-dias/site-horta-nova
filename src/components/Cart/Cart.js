@@ -1,5 +1,6 @@
 import { Fragment, useContext } from "react";
 import { CartContext } from "../../store/cart-context";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartContext = useContext(CartContext);
@@ -9,13 +10,7 @@ const Cart = () => {
       <h1>Cart</h1>
       <ul>
         {cartContext.items.map((item) => {
-          return (
-            <li>
-              <h4>{item.title}</h4>
-              <p>{item.price + " €"}</p>
-              <p>{"Quantidade: " + item.quantity}</p>
-            </li>
-          );
+          return <CartItem item={item} />;
         })}
       </ul>
       {"Total: " + cartContext.totalAmount + " €"}

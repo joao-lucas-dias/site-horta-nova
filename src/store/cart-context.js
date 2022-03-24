@@ -10,6 +10,8 @@ export const CartContext = createContext({
   totalAmount: 0,
   addItem: (item) => {},
   removeItem: (id) => {},
+  increaseQuanity: (id) => {},
+  decreaseQuantity: (id) => {},
   clearCart: () => {}
 });
 
@@ -19,7 +21,7 @@ const cartReducer = (state, action) => {
     updatedItems.push(action.item);
 
     const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.quantity;
+      state.totalAmount + action.item.price * action.item.quantityInfo.quantity;
 
     return {
       items: updatedItems,
@@ -27,6 +29,24 @@ const cartReducer = (state, action) => {
     };
   }
   if (action.type === "REMOVE_ITEM") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.id);
+
+    const itemToRemove = state.items[itemIndex];
+
+    const updatedTotalAmount =
+      state.totalAmount - itemToRemove.price * itemToRemove.quantityInfo.quantity;
+
+    const updatedItems = state.items.filter((item) => item.id !== action.id);
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    };
+  }
+  if (action.type === "INCREASE_QUANTITY") {
+  }
+  if (action.type === "DECREASE_QUANTITY") {
+    
   }
   if (action.type === "CLEAR") {
   }
@@ -45,6 +65,14 @@ const CartContextProvider = (props) => {
     cartActionDispatcher({ type: "REMOVE_ITEM", id: itemId });
   };
 
+  const increaseQuantityHandler = (itemId) => {
+    cartActionDispatcher({ type: "INCREASE_QUANTITY", id: itemId });
+  };
+
+  const decreaseQuantityHandler = (itemId) => {
+    cartActionDispatcher({ type: "DECREASE_QUANTITY", id: itemId });
+  };
+
   const clearCartHandler = () => {
     cartActionDispatcher({ type: "CLEAR" });
   };
@@ -56,6 +84,8 @@ const CartContextProvider = (props) => {
         totalAmount: cartState.totalAmount,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
+        increaseQuanity: increaseQuantityHandler,
+        decreaseQuantity: decreaseQuantityHandler,
         clearCart: clearCartHandler
       }}
     >
