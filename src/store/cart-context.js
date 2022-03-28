@@ -116,7 +116,7 @@ const cartReducer = (state, action) => {
     return {
       items: [],
       totalAmount: 0
-    }
+    };
   }
 
   return defaultCartState;

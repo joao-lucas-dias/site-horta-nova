@@ -7,7 +7,7 @@ const Cart = () => {
 
   const clearCartHandler = () => {
     cartContext.clearCart();
-  }
+  };
 
   return (
     <Fragment>
