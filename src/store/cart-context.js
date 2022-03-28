@@ -17,8 +17,27 @@ export const CartContext = createContext({
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.item.id);
+
     let updatedItems = [...state.items];
-    updatedItems.push(action.item);
+
+    if (itemIndex === -1) {
+      updatedItems.push(action.item);
+    } else {
+      const itemToUpdate = state.items[itemIndex];
+
+      const itemQuantityInfo = itemToUpdate.quantityInfo;
+
+      const updatedItem = {
+        ...itemToUpdate,
+        quantityInfo: {
+          ...itemQuantityInfo,
+          quantity: itemQuantityInfo.quantity + action.item.quantityInfo.quantity
+        }
+      };
+
+      updatedItems[itemIndex] = updatedItem;
+    }
 
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.quantityInfo.quantity;
