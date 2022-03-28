@@ -5,6 +5,10 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const cartContext = useContext(CartContext);
 
+  const clearCartHandler = () => {
+    cartContext.clearCart();
+  }
+
   return (
     <Fragment>
       <h1>Cart</h1>
@@ -14,6 +18,7 @@ const Cart = () => {
         })}
       </ul>
       {"Total: " + cartContext.totalAmount + " €"}
+      {cartContext.items.length > 0 && <button onClick={clearCartHandler}>Limpar</button>}
     </Fragment>
   );
 };
