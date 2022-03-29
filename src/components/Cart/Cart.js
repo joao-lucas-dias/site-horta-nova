@@ -1,8 +1,9 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../store/cart-context";
+import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 
-const Cart = () => {
+const Cart = (props) => {
   const cartContext = useContext(CartContext);
 
   const clearCartHandler = () => {
@@ -10,7 +11,7 @@ const Cart = () => {
   };
 
   return (
-    <Fragment>
+    <Modal onBackdropClick={props.onBackdropClick}>
       <h1>Cart</h1>
       <div>
         <ul>
@@ -21,7 +22,8 @@ const Cart = () => {
         {"Total: " + cartContext.totalAmount + " €"}
       </div>
       {cartContext.items.length > 0 && <button onClick={clearCartHandler}>Limpar</button>}
-    </Fragment>
+      <button onClick={cartContext.toggleCart}>Fechar</button>
+    </Modal>
   );
 };
 

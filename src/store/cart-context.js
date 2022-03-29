@@ -1,13 +1,16 @@
 import { createContext, useReducer } from "react";
 
 const defaultCartState = {
+  cartVisibility: false,
   items: [],
   totalAmount: 0
 };
 
 export const CartContext = createContext({
+  cartVisibility: false,
   items: [],
   totalAmount: 0,
+  toggleCart: () => {},
   addItem: (item) => {},
   removeItem: (id) => {},
   increaseQuanity: (id) => {},
@@ -16,6 +19,12 @@ export const CartContext = createContext({
 });
 
 const cartReducer = (state, action) => {
+  if (action.type === "TOGGLE") {
+    return {
+      ...state,
+      cartVisibility: !state.cartVisibility
+    };
+  }
   if (action.type === "ADD_ITEM") {
     const itemIndex = state.items.findIndex((item) => item.id === action.item.id);
 
@@ -43,6 +52,7 @@ const cartReducer = (state, action) => {
       state.totalAmount + action.item.price * action.item.quantityInfo.quantity;
 
     return {
+      ...state,
       items: updatedItems,
       totalAmount: updatedTotalAmount
     };
@@ -58,6 +68,7 @@ const cartReducer = (state, action) => {
     const updatedItems = state.items.filter((item) => item.id !== action.id);
 
     return {
+      ...state,
       items: updatedItems,
       totalAmount: updatedTotalAmount
     };
@@ -83,6 +94,7 @@ const cartReducer = (state, action) => {
     updatedItems[itemIndex] = updatedItem;
 
     return {
+      ...state,
       items: updatedItems,
       totalAmount: updatedTotalAmount
     };
@@ -108,12 +120,14 @@ const cartReducer = (state, action) => {
     updatedItems[itemIndex] = updatedItem;
 
     return {
+      ...state,
       items: updatedItems,
       totalAmount: updatedTotalAmount
     };
   }
   if (action.type === "CLEAR") {
     return {
+      ...state,
       items: [],
       totalAmount: 0
     };
@@ -124,6 +138,10 @@ const cartReducer = (state, action) => {
 
 const CartContextProvider = (props) => {
   const [cartState, cartActionDispatcher] = useReducer(cartReducer, defaultCartState);
+
+  const toggleCartHandler = () => {
+    cartActionDispatcher({ type: "TOGGLE" });
+  };
 
   const addItemHandler = (newItem) => {
     cartActionDispatcher({ type: "ADD_ITEM", item: newItem });
@@ -148,8 +166,10 @@ const CartContextProvider = (props) => {
   return (
     <CartContext.Provider
       value={{
+        cartVisibility: cartState.cartVisibility,
         items: cartState.items,
         totalAmount: cartState.totalAmount,
+        toggleCart: toggleCartHandler,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
         increaseQuanity: increaseQuantityHandler,
