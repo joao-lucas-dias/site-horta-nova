@@ -17,7 +17,12 @@ const NewBasket = () => {
     return categoryProducts.category === ctx.filteredCategory;
   });
 
-  const filteredProducts = data.products[productsIndex].items;
+  const filteredProducts = data.products[productsIndex].items.map((item) => {
+    return {
+      id: data.products[productsIndex].category + "_" + item.title,
+      ...item
+    }
+  });
 
   return (
     <main style={{"display": "flex", "flexDirection": "row", "justifyContent": "space-between"}}>

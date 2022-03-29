@@ -10,16 +10,37 @@ export const CartContext = createContext({
   totalAmount: 0,
   addItem: (item) => {},
   removeItem: (id) => {},
+  increaseQuanity: (id) => {},
+  decreaseQuantity: (id) => {},
   clearCart: () => {}
 });
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.item.id);
+
     let updatedItems = [...state.items];
-    updatedItems.push(action.item);
+
+    if (itemIndex === -1) {
+      updatedItems.push(action.item);
+    } else {
+      const itemToUpdate = state.items[itemIndex];
+
+      const itemQuantityInfo = itemToUpdate.quantityInfo;
+
+      const updatedItem = {
+        ...itemToUpdate,
+        quantityInfo: {
+          ...itemQuantityInfo,
+          quantity: itemQuantityInfo.quantity + action.item.quantityInfo.quantity
+        }
+      };
+
+      updatedItems[itemIndex] = updatedItem;
+    }
 
     const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.quantity;
+      state.totalAmount + action.item.price * action.item.quantityInfo.quantity;
 
     return {
       items: updatedItems,
@@ -27,8 +48,75 @@ const cartReducer = (state, action) => {
     };
   }
   if (action.type === "REMOVE_ITEM") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.id);
+
+    const itemToRemove = state.items[itemIndex];
+
+    const updatedTotalAmount =
+      state.totalAmount - itemToRemove.price * itemToRemove.quantityInfo.quantity;
+
+    const updatedItems = state.items.filter((item) => item.id !== action.id);
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    };
+  }
+  if (action.type === "INCREASE_QUANTITY") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.id);
+
+    const itemToUpdate = state.items[itemIndex];
+
+    const itemQuantityInfo = itemToUpdate.quantityInfo;
+
+    const updatedItem = {
+      ...itemToUpdate,
+      quantityInfo: {
+        ...itemQuantityInfo,
+        quantity: itemQuantityInfo.quantity + itemQuantityInfo.step
+      }
+    };
+
+    const updatedTotalAmount = state.totalAmount + itemToUpdate.price;
+
+    const updatedItems = [...state.items];
+    updatedItems[itemIndex] = updatedItem;
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    };
+  }
+  if (action.type === "DECREASE_QUANTITY") {
+    const itemIndex = state.items.findIndex((item) => item.id === action.id);
+
+    const itemToUpdate = state.items[itemIndex];
+
+    const itemQuantityInfo = itemToUpdate.quantityInfo;
+
+    const updatedItem = {
+      ...itemToUpdate,
+      quantityInfo: {
+        ...itemQuantityInfo,
+        quantity: itemQuantityInfo.quantity - itemQuantityInfo.step
+      }
+    };
+
+    const updatedTotalAmount = state.totalAmount - itemToUpdate.price;
+
+    const updatedItems = [...state.items];
+    updatedItems[itemIndex] = updatedItem;
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    };
   }
   if (action.type === "CLEAR") {
+    return {
+      items: [],
+      totalAmount: 0
+    };
   }
 
   return defaultCartState;
@@ -45,6 +133,14 @@ const CartContextProvider = (props) => {
     cartActionDispatcher({ type: "REMOVE_ITEM", id: itemId });
   };
 
+  const increaseQuantityHandler = (itemId) => {
+    cartActionDispatcher({ type: "INCREASE_QUANTITY", id: itemId });
+  };
+
+  const decreaseQuantityHandler = (itemId) => {
+    cartActionDispatcher({ type: "DECREASE_QUANTITY", id: itemId });
+  };
+
   const clearCartHandler = () => {
     cartActionDispatcher({ type: "CLEAR" });
   };
@@ -56,6 +152,8 @@ const CartContextProvider = (props) => {
         totalAmount: cartState.totalAmount,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
+        increaseQuanity: increaseQuantityHandler,
+        decreaseQuantity: decreaseQuantityHandler,
         clearCart: clearCartHandler
       }}
     >
