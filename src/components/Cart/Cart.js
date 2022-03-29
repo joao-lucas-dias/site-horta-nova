@@ -12,12 +12,14 @@ const Cart = () => {
   return (
     <Fragment>
       <h1>Cart</h1>
-      <ul>
-        {cartContext.items.map((item) => {
-          return <CartItem item={item} />;
-        })}
-      </ul>
-      {"Total: " + cartContext.totalAmount + " €"}
+      <div>
+        <ul>
+          {cartContext.items.map((item) => {
+            return <CartItem item={item} />;
+          })}
+        </ul>
+        {"Total: " + cartContext.totalAmount + " €"}
+      </div>
       {cartContext.items.length > 0 && <button onClick={clearCartHandler}>Limpar</button>}
     </Fragment>
   );
