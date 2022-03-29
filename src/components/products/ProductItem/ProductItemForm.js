@@ -2,9 +2,7 @@ import { useState } from "react";
 
 const ProductItemForm = (props) => {
   const [currentQuantity, setCurrentQuantity] = useState(props.quantityInfo.min);
-  const newMax =
-    props.quantityInfo.max === null ? Number.MAX_SAFE_INTEGER : props.quantityInfo.max;
-
+  
   const quantityChangeHandler = (type) => {
     if (type === "dec" && currentQuantity > props.quantityInfo.min) {
       setCurrentQuantity((oldValue) => {
@@ -12,7 +10,7 @@ const ProductItemForm = (props) => {
       });
     }
 
-    if (type === "inc" && currentQuantity < newMax) {
+    if (type === "inc" && currentQuantity < props.quantityInfo.max) {
       setCurrentQuantity((oldValue) => {
         return oldValue + props.quantityInfo.step;
       });
@@ -22,13 +20,13 @@ const ProductItemForm = (props) => {
   const addProductHandler = (event) => {
     event.preventDefault();
 
-    console.log("add: " + currentQuantity);
+    props.onAddToCart(currentQuantity);
 
     setCurrentQuantity(props.quantityInfo.min);
   };
 
   return (
-    <form onSubmit={addProductHandler}>
+    <form onSubmit={addProductHandler} style={{"textAlign": "center"}}>
       <div>
         <button type="button" onClick={() => quantityChangeHandler("dec")}>
           -
@@ -40,7 +38,8 @@ const ProductItemForm = (props) => {
           value={currentQuantity}
           min={props.quantityInfo.min}
           step={props.quantityInfo.step}
-          max={newMax}
+          style={{"width": "2rem"}}
+          max={props.quantityInfo.max}
         />
         <button type="button" onClick={() => quantityChangeHandler("inc")}>
           +

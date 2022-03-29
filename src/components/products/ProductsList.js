@@ -6,7 +6,7 @@ const ProductsList = (props) => {
     <Fragment>
       <h2>Produtos</h2>
       <section>
-        <ul style={{ listStyleType: "none" }}>
+        <ul style={{ listStyleType: "none", display: "grid", gridTemplateColumns: "auto auto auto auto", gap: "10px"}}>
           {props.products.map((productInfo) => {
             return <ProductItem product={productInfo} />;
           })}
