@@ -24,8 +24,8 @@ const ModalOverlay = (props) => {
       style={{
         position: "fixed",
         top: "15vh",
-        left: "5%",
-        width: "90%",
+        width: "50%",
+        height: "50%",
         backgroundColor: "white",
         padding: "1rem",
         borderRadius: "14px",
