@@ -31,7 +31,7 @@ const ModalOverlay = (props) => {
         borderRadius: "14px",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
         zIndex: 30,
-        animation: "slideDown 300ms ease-out forwards"
+        //animation: "slideDown 300ms ease-out forwards"
       }}
     >
       <div>{props.children}</div>

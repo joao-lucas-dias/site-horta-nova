@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import CategoriesList from "../components/Categories/CategoriesList";
 import ProductsList from "../components/Products/ProductsList";
+import Cart from "../components/Cart/Cart";
 
 import CategoryContext from "../store/category-context";
+import { CartContext } from "../store/cart-context";
 
 // This is for development purposes only.
 // Deploy app should get this file from database
 import * as productsData from "../assets/lista_produtos.json";
-import Cart from "../components/Cart/Cart";
-import { CartContext } from "../store/cart-context";
 
 const { data } = productsData;
 
@@ -29,7 +29,6 @@ const NewBasket = () => {
 
   const toggleCartHandler = () => {
     cartContext.toggleCart();
-    console.log(cartContext.cartVisibility);
   };
 
   return (
