@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import ProductItemQuantityInput from "./ProductItemQuantityInput";
 
@@ -7,6 +7,7 @@ import ProductItemPrice from "./ProductItemPrice";
 
 const ProductItem = (props) => {
   const cartContext = useContext(CartContext);
+  const [currentQuantity, setCurrentQuantity] = useState(props.product.quantity.min);
 
   const itemQuantityInfo = {
     min: props.product.quantity.min,
@@ -17,16 +18,32 @@ const ProductItem = (props) => {
         : props.product.quantity.max
   };
 
-  const addToCartHandler = (quantity) => {
+  const quantityChangeHandler = (type) => {
+    if (type === "dec" && currentQuantity > props.product.quantity.min) {
+      setCurrentQuantity((oldValue) => {
+        return oldValue - props.product.quantity.step;
+      });
+    }
+
+    if (type === "inc" && currentQuantity < itemQuantityInfo.max) {
+      setCurrentQuantity((oldValue) => {
+        return oldValue + props.product.quantity.step;
+      });
+    }
+  };
+
+  const addToCartHandler = () => {
     cartContext.addItem({
       id: props.product.id,
       title: props.product.title,
       quantityInfo: {
-        quantity,
+        quantity: currentQuantity,
         ...itemQuantityInfo
       },
       price: props.product.price.value
     });
+
+    setCurrentQuantity(props.product.quantity.min);
   };
 
   return (
@@ -46,12 +63,13 @@ const ProductItem = (props) => {
           />
           <ProductItemQuantityInput
             quantityInfo={itemQuantityInfo}
-            onAddToCart={addToCartHandler}
+            currentQuantity={currentQuantity}
+            onQuantityChange={quantityChangeHandler}
           />
         </div>
       </div>
       <div className="card-footer">
-        <button>Adicionar</button>
+        <button onClick={addToCartHandler}>Adicionar</button>
       </div>
     </div>
   );
