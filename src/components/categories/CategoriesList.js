@@ -1,16 +1,15 @@
-import { Fragment } from "react";
 import CategoryItem from "./CategoryItem";
 
 const CategoriesList = (props) => {
   return (
-    <Fragment>
+    <div style={{ display: "flex", flexDirection: "column", width: "30vw" }}>
       <h2>Categorias</h2>
       <ul>
         {props.categories.map((category) => {
           return <CategoryItem category={category} />;
         })}
       </ul>
-    </Fragment>
+    </div>
   );
 };
 

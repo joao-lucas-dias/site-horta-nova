@@ -4,7 +4,7 @@
   place-items: center;
   width: 100%;
   max-height: 30rem;
-  gap: 1rem;
+  row-gap: 1.5rem;
   background-color: rgb(248, 205, 152);
   padding: 20px 0px;
   overflow: hidden;

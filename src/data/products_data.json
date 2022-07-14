@@ -144,6 +144,7 @@
         "category": "Frescos",
         "items": [
           {
+            "imgUrl": "/images/louro.png",
             "title": "Mini Bróculos",
             "title_extra": "molho 250 gr.",
             "info": {
@@ -167,6 +168,7 @@
         "category": "Mercearia",
         "items": [
           {
+            "imgUrl": "/images/louro.png",
             "title": "Ovos Caseiros",
             "title_extra": "caixa 12 uni.",
             "info": {
@@ -190,6 +192,7 @@
         "category": "DoZero - Cultura Viva",
         "items": [
           {
+            "imgUrl": "/images/louro.png",
             "title": "Tartinha Limão",
             "title_extra": "unidade",
             "info": {

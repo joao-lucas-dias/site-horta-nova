@@ -5,14 +5,14 @@ import "./ProductsList.css";
 
 const ProductsList = (props) => {
   return (
-    <Fragment>
+    <div style={{ display: "flex", flexDirection: "column", width: "70vw" }}>
       <h2>Produtos</h2>
       <div className="products-container">
         {props.products.map((productInfo) => {
           return <ProductItem product={productInfo} />;
         })}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
