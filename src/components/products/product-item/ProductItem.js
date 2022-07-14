@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
 import ProductItemForm from "./ProductItemForm";
 
+import "./ProductItem.css";
+
 const ProductItem = (props) => {
   const cartContext = useContext(CartContext);
 
@@ -27,21 +29,29 @@ const ProductItem = (props) => {
   };
 
   return (
-    <li key={props.product.id} style={{ border: "1px solid black", width: "10rem" }}>
-      <div style={{ textAlign: "center" }}>
-        <h3>{props.product.title}</h3>
-        <p>({props.product.title_extra})</p>
+    <div className="card">
+      <div className="card-header-img">
+        <img src={props.product.imgUrl} alt="" />
       </div>
-      <div></div>
-      <div style={{ maxHeight: "50px", overflowY: "clip" }}>
-        <p>Origem: {props.product.info.origin}</p>
-        <p>{props.product.info.info_extra}</p>
+      <div className="card-body">
+        <div className="card-title">
+          <h3>{props.product.title}</h3>
+          <p>({props.product.title_extra})</p>
+        </div>
+        <div>
+          <p>
+            {props.product.price.value}€ / {props.product.price.measure}
+          </p>
+          <ProductItemForm
+            quantityInfo={itemQuantityInfo}
+            onAddToCart={addToCartHandler}
+          />
+        </div>
       </div>
-      <p>
-        {props.product.price.value}€ / {props.product.price.measure}
-      </p>
-      <ProductItemForm quantityInfo={itemQuantityInfo} onAddToCart={addToCartHandler} />
-    </li>
+      <div className="card-footer">
+        <button>Adicionar</button>
+      </div>
+    </div>
   );
 };
 

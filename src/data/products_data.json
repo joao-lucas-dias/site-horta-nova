@@ -6,6 +6,7 @@
         "category": "Aromáticas",
         "items": [
           {
+            "imgUrl": "/images/louro.png",
             "title": "Louro",
             "title_extra": "molho 40 gr.",
             "info": {
@@ -24,6 +25,102 @@
             }
           },
           {
+            "imgUrl": "/images/salsa.png",
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "imgUrl": "/images/salsa.png",
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "imgUrl": "/images/salsa.png",
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "imgUrl": "/images/salsa.png",
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "imgUrl": "/images/salsa.png",
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "imgUrl": "/images/salsa.png",
             "title": "Salsa",
             "title_extra": "molho 40 gr.",
             "info": {

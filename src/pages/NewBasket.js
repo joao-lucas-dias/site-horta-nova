@@ -32,22 +32,22 @@ const NewBasket = () => {
   };
 
   return (
-    <main
-      style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}
+    <div
+      style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
     >
-      <section>
+      <div>
         <h1>Personalize o seu Cabaz</h1>
         <CategoriesList categories={data.categories} />
         <ProductsList products={filteredProducts} />
-      </section>
-      <aside style={{ width: "25rem" }}>
+      </div>
+      <div style={{ width: "25rem" }}>
         <div>
           <button onClick={toggleCartHandler}>O meu Cabaz</button>
           {cartContext.items.length}
         </div>
         {cartContext.cartVisibility && <Cart onBackdropClick={toggleCartHandler} />}
-      </aside>
-    </main>
+      </div>
+    </div>
   );
 };
 
