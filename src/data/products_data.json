@@ -1,0 +1,117 @@
+{
+  "data": {
+    "categories": ["Aromáticas", "Frescos", "Mercearia", "DoZero - Cultura Viva"],
+    "products": [
+      {
+        "category": "Aromáticas",
+        "items": [
+          {
+            "title": "Louro",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          },
+          {
+            "title": "Salsa",
+            "title_extra": "molho 40 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 0.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          }
+        ]
+      },
+      {
+        "category": "Frescos",
+        "items": [
+          {
+            "title": "Mini Bróculos",
+            "title_extra": "molho 250 gr.",
+            "info": {
+              "origin": "Horta",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 1.5,
+              "measure": "molho"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          }
+        ]
+      },
+      {
+        "category": "Mercearia",
+        "items": [
+          {
+            "title": "Ovos Caseiros",
+            "title_extra": "caixa 12 uni.",
+            "info": {
+              "origin": "Horta e Sazonal Project",
+              "info_extra": ""
+            },
+            "price": {
+              "value": 4,
+              "measure": "caixa"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          }
+        ]
+      },
+      {
+        "category": "DoZero - Cultura Viva",
+        "items": [
+          {
+            "title": "Tartinha Limão",
+            "title_extra": "unidade",
+            "info": {
+              "origin": "",
+              "info_extra": "Farinha de trigo bio artesanal, ovos do monte recheada com creme de limão. Açúcar de cana bio."
+            },
+            "price": {
+              "value": 3,
+              "measure": "unidade"
+            },
+            "quantity": {
+              "measure": "unidade",
+              "min": 1,
+              "step": 1,
+              "max": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

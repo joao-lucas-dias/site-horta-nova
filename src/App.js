@@ -2,8 +2,8 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import NewBasket from "./pages/NewBasket";
-import CartContextProvider from "./store/cart-context";
-import { CategoryContextProvider } from "./store/category-context";
+import CartContextProvider from "./context/CartContext";
+import { CategoryContextProvider } from "./context/CategoryContext";
 
 function App() {
   return (

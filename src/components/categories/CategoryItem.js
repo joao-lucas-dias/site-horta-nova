@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CategoryContext from "../../store/category-context";
+import CategoryContext from "../../context/CategoryContext";
 
 const CategoryItem = (props) => {
   const ctx = useContext(CategoryContext);

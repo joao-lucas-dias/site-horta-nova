@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import ProductItem from "./ProductItem/ProductItem";
+import ProductItem from "./product-item/ProductItem";
 
 const ProductsList = (props) => {
   return (

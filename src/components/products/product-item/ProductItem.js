@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "../../../store/cart-context";
+import { CartContext } from "../../../context/CartContext";
 import ProductItemForm from "./ProductItemForm";
 
 const ProductItem = (props) => {

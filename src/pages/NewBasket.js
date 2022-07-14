@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import CategoriesList from "../components/Categories/CategoriesList";
-import ProductsList from "../components/Products/ProductsList";
-import Cart from "../components/Cart/Cart";
+import CategoriesList from "../components/categories/CategoriesList";
+import ProductsList from "../components/products/ProductsList";
+import Cart from "../components/cart/Cart";
 
-import CategoryContext from "../store/category-context";
-import { CartContext } from "../store/cart-context";
+import CategoryContext from "../context/CategoryContext";
+import { CartContext } from "../context/CartContext";
 
 // This is for development purposes only.
 // Deploy app should get this file from database
-import * as productsData from "../assets/lista_produtos.json";
+import * as productsData from "../data/products_data.json";
 
 const { data } = productsData;
 
