@@ -2,7 +2,7 @@
   background-color: orange;
   border-radius: .3rem;
   overflow: hidden;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
   max-width: 250px;
   max-height: 400px;
 }
@@ -18,4 +18,49 @@
   max-height: 200px;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.card-body {
+  justify-content: center;
+  text-align: center;
+}
+
+.card-title {
+  margin-top: 0.25rem;
+  margin-bottom: .7rem;
+}
+
+.card-title.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.card-title.info {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.card-input-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 85%;
+  margin: 0px auto 1rem auto;
+  border: 3px solid darkorange;
+  background-color: lightgreen;
+  margin-bottom: .5rem;
+  padding: 1rem .4rem;
+}
+
+.card-footer > Button{
+  width: 100%;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  min-height: 2rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
 }

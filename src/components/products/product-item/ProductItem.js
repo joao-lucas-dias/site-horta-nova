@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
-import ProductItemForm from "./ProductItemForm";
+import ProductItemQuantityInput from "./ProductItemQuantityInput";
 
 import "./ProductItem.css";
+import ProductItemPrice from "./ProductItemPrice";
 
 const ProductItem = (props) => {
   const cartContext = useContext(CartContext);
@@ -35,14 +36,15 @@ const ProductItem = (props) => {
       </div>
       <div className="card-body">
         <div className="card-title">
-          <h3>{props.product.title}</h3>
-          <p>({props.product.title_extra})</p>
+          <div className="card-title name">{props.product.title}</div>
+          <div className="card-title info">({props.product.title_extra})</div>
         </div>
-        <div>
-          <p>
-            {props.product.price.value}€ / {props.product.price.measure}
-          </p>
-          <ProductItemForm
+        <div className="card-input-box">
+          <ProductItemPrice
+            value={props.product.price.value}
+            measure={props.product.price.measure}
+          />
+          <ProductItemQuantityInput
             quantityInfo={itemQuantityInfo}
             onAddToCart={addToCartHandler}
           />
