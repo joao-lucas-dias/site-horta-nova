@@ -1,5 +1,5 @@
 .DS_STORE
-src/assets
+public/images/*
 design
 node_modules
 scripts/flow/*/.flowconfig
