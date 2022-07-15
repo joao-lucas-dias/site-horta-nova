@@ -1,7 +1,8 @@
 const ProductItemPrice = (props) => {
   return (
-    <div>
-      {props.value}€ / {props.measure}
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <b>{props.value}€</b>
+      <p style={{ margin: "0" }}>/ {props.measure}</p>
     </div>
   );
 };

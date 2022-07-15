@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import ProductItem from "./product-item/ProductItem";
 
 import "./ProductsList.css";

@@ -47,7 +47,7 @@
 .card-input-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 85%;
   margin: 0px auto 1rem auto;
   border: 3px solid darkorange;
